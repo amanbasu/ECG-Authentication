@@ -56,7 +56,7 @@ def train_model(model, loader, weights_path="model.h5"):
     best = 0
 
     train_loss, train_acc = [], []
-
+     
     print("Starting training process!")
     print("-------------------------------------")
     for i in range(1, n_iter):
