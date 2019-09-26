@@ -8,6 +8,8 @@ This repository contains the code of developing a Deep Learning model to identif
 
 # Data
 
+The data has been taken from ECG-ID Database.
+
 > The database contains 310 ECG recordings, obtained from 90 persons. Each recording contains:
 > 
 > ECG lead I, recorded for 20 seconds, digitized at 500 Hz with 12-bit resolution over a nominal ±10 mV range;
@@ -19,3 +21,9 @@ information (in the .hea file for the record) containing age, gender and recordi
 > 
 > Signal 0: ECG I (raw signal)
 > Signal 1: ECG I filtered (filtered signal)
+
+The data was used to create individual ECG image samples belonging to different people and train the model.
+
+# Model
+
+Siamese network was trained on the ECG image dataset to distinguish between the individuals and then hosted on the Google Cloud Platform.
