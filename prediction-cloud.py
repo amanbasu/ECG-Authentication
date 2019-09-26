@@ -8,7 +8,6 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'path-to-your-service-account-jso
 # define the model verison hosted on the AI platform
 name = 'projects/{}/models/{}/versions/{}'.format('your-project-name', 'your-model-name', 'your-version-name')
 
-
 def read_img(img):
     return np.array(Image.open(img).resize((224, 144)))[:,:,0:1] / 255
 
@@ -24,7 +23,6 @@ response = service.projects().predict(
     name=name,
     body={'instances': instances}
 ).execute()
-
 
 # receiving the predictions
 if 'error' in response:
