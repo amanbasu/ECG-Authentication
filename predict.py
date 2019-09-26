@@ -8,7 +8,7 @@ model = load_model('model_ecg.h5')
 w, h = 144, 224
 
 def read_image(img):
-  retrun np.array(Image.open(img).resize((h, w)))[:,:,0:1] / 255
+  return np.array(Image.open(img).resize((h, w)))[:,:,0:1] / 255
 
 person_1 = read_image(records[0])
 person_2 = read_image(records[100])
