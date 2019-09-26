@@ -34,16 +34,16 @@ def segmentation(filename):
     """ Gets the ECG segment (wave) and saves to image """
 
     # to save images in new folder
-    folder = '/'.join(filename.replace('1.0.0', 'mod').split('/')[:-1])
+    folder = '/'.join(filename.replace('1.0.0', 'filter').split('/')[:-1])
     filename_new = filename.split('/')[-1]
     
     if not os.path.exists(folder):
         os.mkdir(folder)
     
     # reads raw signal (ECG I)
-    record = wfdb.rdsamp(filename, sampfrom=0, sampto=5000, channels=[0])
+    record = wfdb.rdsamp(filename)
     # get the first column signal
-    data = record[0][:,0]
+    data = record[0][:,1]
     signals = []
     count = 1
 

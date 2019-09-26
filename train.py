@@ -17,15 +17,22 @@ def get_siamese_model(input_shape):
     right_input = Input(input_shape)
 
     model = Sequential()
-    model.add(Conv2D(64, (3,3), activation='relu', input_shape=input_shape, kernel_regularizer=l2(2e-4)))
+    model.add(Conv2D(32, (3,3), activation='relu', input_shape=input_shape, kernel_regularizer=l2(2e-4)))
+    model.add(Conv2D(32, (3,3), activation='relu', kernel_regularizer=l2(2e-4)))
     model.add(MaxPooling2D())
+    
+    model.add(Conv2D(64, (3,3), activation='relu', kernel_regularizer=l2(2e-4)))
     model.add(Conv2D(64, (3,3), activation='relu', kernel_regularizer=l2(2e-4)))
     model.add(MaxPooling2D())
+    
+    model.add(Conv2D(128, (3,3), activation='relu', kernel_regularizer=l2(2e-4)))
     model.add(Conv2D(128, (3,3), activation='relu', kernel_regularizer=l2(2e-4)))
     model.add(MaxPooling2D())
-    model.add(Conv2D(128, (3,3), activation='relu', kernel_regularizer=l2(2e-4)))
-    model.add(MaxPooling2D())
+    
     model.add(Conv2D(256, (3,3), activation='relu', kernel_regularizer=l2(2e-4)))
+    model.add(Conv2D(256, (3,3), activation='relu', kernel_regularizer=l2(2e-4)))
+    model.add(MaxPooling2D())
+    
     model.add(Flatten())
     model.add(Dense(512, activation='sigmoid', kernel_regularizer=l2(1e-3)))
     
@@ -44,12 +51,12 @@ def train_model(model, loader, weights_path="model.h5"):
     loss_every = 5          # interval for printing loss (iterations)
     batch_size = 32
     n_iter = 1000
-    N_way = 1               # how many people for testing one-shot tasks?
+    N_way = 5               # how many people for testing one-shot tasks?
     n_val = 50              # how many one-shot tasks to validate on?
-    best = -1
+    best = 0
 
     train_loss, train_acc = [], []
-
+     
     print("Starting training process!")
     print("-------------------------------------")
     for i in range(1, n_iter):
@@ -70,7 +77,7 @@ def train_model(model, loader, weights_path="model.h5"):
               best = val_acc
 
 if __name__ == '__main__':
-    model = get_siamese_model((144, 224, 3))
+    model = get_siamese_model((144, 224, 1))
     optimizer = Adam(lr = 0.00006)
     model.compile(loss="binary_crossentropy", optimizer=optimizer)
 
