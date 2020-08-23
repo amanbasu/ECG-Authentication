@@ -1,4 +1,5 @@
 # ECG-Authentication
+Find more information on my Medium [blog](https://medium.com/intel-software-innovators/ecg-to-identify-individuals-from-data-to-deployment-74cce404f9f0).
 
 ![](https://github.com/amanbasu/ECG-Authentication/blob/master/images/result.png)
 
