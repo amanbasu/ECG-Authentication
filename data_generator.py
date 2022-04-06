@@ -98,7 +98,7 @@ class Siamese_Loader:
             
         # shuffle data
         index = list(range(N))
-        np.random.shuffle()
+        np.random.shuffle(index)
         targets, test_image, support_set = targets[index], test_image[index], support_set[index]
         pairs = [test_image, support_set]
 
