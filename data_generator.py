@@ -97,7 +97,9 @@ class Siamese_Loader:
           support_set[i] = np.array(Image.open(pair_y).resize((h, w)))[:,:,0:1] / 255
             
         # shuffle data
-        targets, test_image, support_set = shuffle(targets, test_image, support_set)
+        index = list(range(N))
+        np.random.shuffle()
+        targets, test_image, support_set = targets[index], test_image[index], support_set[index]
         pairs = [test_image, support_set]
 
         return pairs, targets
